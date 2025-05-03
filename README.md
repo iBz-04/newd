@@ -1,18 +1,17 @@
-# ifnude - nudity detection that just works
+# newd - nudity detection that just works
 
 A neural nets powered library that can detect nudity in images of both real humans and drawings. It takes an image as input and tells you exactly what NSFW parts of the body are visible. Optionally, you can censor the said parts.
 
-<img src="https://i.imgur.com/0KPJbl9.jpg" width=600>
 
 ### Installation
 ```bash
-pip install ifnude
+pip install newd
 ```
 
 ### Example
-> Note: Importing ifnude for the first time will download a 139MB module to "/your/home/dir/.ifnude/", just once.
+> Note: Importing newd for the first time will download a 139MB module to "/your/home/dir/.newd/", just once.
 ```python
-from ifnude import detect
+from newd import detect
 
 # use mode="fast" for x3 speed with slightly lower accuracy
 print(detect('/path/to/nsfw.png'))

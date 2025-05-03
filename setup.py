@@ -9,9 +9,9 @@ from shutil import rmtree
 from setuptools import find_packages, setup, Command
 
 # Package meta-data.
-NAME = 'ifnude'
+NAME = 'newd'
 DESCRIPTION = 'An AI powered nudity detection library'
-URL = 'https://github.com/s0md3v/ifnude'
+URL = 'https://github.com/s0md3v/newd'
 EMAIL = 's0md3v@gmail.com'
 AUTHOR = 'Somdev Sangwan'
 REQUIRES_PYTHON = '>=3.6.0'

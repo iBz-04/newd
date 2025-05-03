@@ -1,4 +1,4 @@
-from ifnude import detect
+from newd import detect
 
 
 # Try with a lower threshold

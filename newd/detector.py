@@ -23,7 +23,7 @@ classes_url = "https://huggingface.co/s0md3v/nudity-checker/resolve/main/classes
 
 
 home = Path.home()
-model_folder = os.path.join(home, f".ifnude/")
+model_folder = os.path.join(home, f".newd/")
 if not os.path.exists(model_folder):
     os.makedirs(model_folder)
 
