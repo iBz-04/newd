@@ -1,31 +1,68 @@
-# newd - nudity detection that just works
+## Overview
 
-A neural nets powered library that can detect nudity in images of both real humans and drawings. It takes an image as input and tells you exactly what NSFW parts of the body are visible. Optionally, you can censor the said parts.
+ `newd` analyzes images and identifies specific NSFW body parts with high accuracy. It can also optionally censor detected areas.
 
+## Installation
 
-### Installation
 ```bash
 pip install newd
 ```
 
-### Example
-> Note: Importing newd for the first time will download a 139MB module to "/your/home/dir/.newd/", just once.
+## Usage
+
+### Basic Detection
+
 ```python
 from newd import detect
 
-# use mode="fast" for x3 speed with slightly lower accuracy
-print(detect('/path/to/nsfw.png'))
+# Standard detection with default settings
+results = detect('path/to/image.jpg')
+print(results)
 ```
 
-Instead of a path, you can use a variable that contains an image loaded through `cv2` (opencv) or `PIL` (pillow).
+### Advanced Options
 
-#### Output
+```python
+# Faster detection with slightly reduced accuracy
+results = detect('image.jpg', mode="fast")
+
+# Adjust detection sensitivity
+results = detect('image.jpg', min_prob=0.3)  # Lower threshold catches more potential matches
+
+# Combine options
+results = detect('image.jpg', mode="fast", min_prob=0.3)
 ```
+
+### Compatible Input Types
+
+The `detect()` function accepts:
+- String file paths
+- Images loaded with OpenCV (`cv2`)
+- Images loaded with PIL/Pillow
+
+## Output Format
+
+Detection results are returned as a list of dictionaries:
+
+```python
 [
-  {'box': [164, 188, 246, 271], 'score': 0.8253238201141357, 'label': 'EXPOSED_BREAST_F'},
-  {'box': [252, 190, 335, 270], 'score': 0.8235630989074707, 'label': 'EXPOSED_BREAST_F'}
+  {
+    'box': [x1, y1, x2, y2],  # Bounding box coordinates (top-left, bottom-right)
+    'score': 0.825,           # Confidence score (0-1)
+    'label': 'EXPOSED_BREAST_F'  # Classification label
+  },
+  # Additional detections...
 ]
 ```
 
-### Credits
-This is fork of [NudeNet](https://pypi.org/project/NudeNet/) library which doesn't work anymore. I have taken the liberty to remove the video detection functionality as it was prone to crashes. It will be re-implemented in future.
+## First-Time Use
+
+When importing `newd` for the first time, it will download a 139MB model file to your home directory (`~/.newd/`). This happens only once.
+
+## Performance Notes
+
+- Standard mode: Best accuracy, normal processing speed
+- Fast mode: ~3x faster processing with slightly reduced accuracy
+
+
+
