@@ -64,5 +64,42 @@ When importing `newd` for the first time, it will download a 139MB model file to
 - Standard mode: Best accuracy, normal processing speed
 - Fast mode: ~3x faster processing with slightly reduced accuracy
 
+---
+
+## Censoring / Redacting Detected Regions
+
+`newd.censor()` masks detected NSFW regions with solid black rectangles. Use it when you need to create a safe-for-work version of an image.
+
+```python
+from newd import censor
+
+# Censor all detected areas and write the result
+censored_img = censor(
+    'image.jpg',
+    out_path='image_censored.jpg'  # file will be written to disk
+)
+
+# Only censor specific labels (e.g. exposed anus & male genitals)
+selected_parts = ['EXPOSED_ANUS_F', 'EXPOSED_GENITALIA_M']
+censored_img = censor(
+    'image.jpg',
+    out_path='image_censored.jpg',
+    parts_to_blur=selected_parts
+)
+```
+
+Function parameters:
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `img_path` | str / Path | Source image or path. |
+| `out_path` | str / Path, optional | Destination path; if omitted you can still obtain the result via the return value when `visualize=True`. |
+| `visualize` | bool, default `False` | If `True`, the censored `numpy.ndarray` image is returned for display (`cv2.imshow`, etc.). |
+| `parts_to_blur` | List[str], optional | Restrict censoring to given label names. When empty, all detected labels are censored. |
+
+If neither `out_path` nor `visualize=True` is supplied, the function exits early because there is nowhere to deliver the censored image.
+
+---
+
 
 
