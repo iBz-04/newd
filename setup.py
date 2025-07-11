@@ -10,12 +10,12 @@ from setuptools import find_packages, setup, Command
 
 # Package meta-data.
 NAME = 'newd'
-DESCRIPTION = 'An AI powered nudity detection library'
-URL = 'https://github.com/s0md3v/newd'
-EMAIL = 's0md3v@gmail.com'
-AUTHOR = 'Somdev Sangwan'
+DESCRIPTION = 'Nudity detection through deep learning'
+URL = 'https://github.com/iBz-04/newd'
+EMAIL = 'issakaibrahimrayamah@gmail.com'
+AUTHOR = 'iBz-04'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '0.0.3'
+VERSION = '0.0.4'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
@@ -111,7 +111,7 @@ setup(
         'Operating System :: OS Independent',
     ],
     project_urls={
-        'Documentation': 'https://github.com/s0md3v/newd#readme',
+        'Documentation': 'https://github.com/iBz-04/newd#readme',
         'Source': URL,
         'Tracker': f'{URL}/issues',
     },
