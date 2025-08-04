@@ -18,8 +18,8 @@ def download(url, path):
     with tqdm(total=total, desc='Downloading', unit='B', unit_scale=True, unit_divisor=1024) as progress:
         urllib.request.urlretrieve(url, path, reporthook=lambda count, block_size, total_size: progress.update(block_size))
 
-model_url = "https://huggingface.co/s0md3v/nudity-checker/resolve/main/detector.onnx"
-classes_url = "https://huggingface.co/s0md3v/nudity-checker/resolve/main/classes"
+model_url = "https://huggingface.co/Ibz04/newd/resolve/main/detector.onnx"
+classes_url = "https://huggingface.co/Ibz04/newd/resolve/main/classes"
 
 
 home = Path.home()
